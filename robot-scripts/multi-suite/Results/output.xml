@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170525 14:18:35.842" generator="Robot 3.0.2 (Python 2.7.13 on darwin)">
+<suite source="/Users/sushmakattinti/Git/development/robot-scripts/amazon/Tests/Locators.robot" id="s1" name="Locators">
+<test id="s1-t1" name="Should be able to search for product">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://www.amazon.com</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20170525 14:18:36.064" level="INFO">Opening browser 'chrome' to base url 'http://www.amazon.com'</msg>
+<status status="PASS" endtime="20170525 14:18:40.637" starttime="20170525 14:18:36.064"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3s</arg>
+</arguments>
+<msg timestamp="20170525 14:18:43.640" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" endtime="20170525 14:18:43.640" starttime="20170525 14:18:40.638"></status>
+</kw>
+<kw name="Click Image" library="Selenium2Library">
+<doc>Clicks an image found by `locator`.</doc>
+<arguments>
+<arg>Home</arg>
+</arguments>
+<msg timestamp="20170525 14:18:43.641" level="INFO">Clicking image 'Home'.</msg>
+<status status="PASS" endtime="20170525 14:18:45.640" starttime="20170525 14:18:43.640"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3s</arg>
+</arguments>
+<msg timestamp="20170525 14:18:48.641" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" endtime="20170525 14:18:48.642" starttime="20170525 14:18:45.641"></status>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170525 14:18:48.718" starttime="20170525 14:18:48.642"></status>
+</kw>
+<doc>This is some basic info about the test</doc>
+<tags>
+<tag>Smoke</tag>
+</tags>
+<status status="PASS" endtime="20170525 14:18:48.718" critical="yes" starttime="20170525 14:18:36.062"></status>
+</test>
+<doc>This is some basic info about the whole suite</doc>
+<status status="PASS" endtime="20170525 14:18:48.721" starttime="20170525 14:18:35.846"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">Smoke</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Locators" pass="1">Locators</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
