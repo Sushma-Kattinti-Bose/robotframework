@@ -1,495 +1,351 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20170603 16:26:10.641" generator="Robot 3.0.2 (Python 2.7.13 on darwin)">
-<suite source="/Users/sushmakattinti/Git/development/robot-scripts/amazon/Tests/Amazon.robot" id="s1" name="Amazon">
-<test id="s1-t1" name="Logged out user can search for products">
-<kw type="setup" name="Begin Web Test" library="Common">
-<kw name="Open Browser" library="Selenium2Library">
-<doc>Opens a new browser instance to given URL.</doc>
+<robot generated="20170606 23:11:57.111" generator="Robot 3.0.2 (Python 2.7.13 on darwin)">
+<suite source="/Users/sushmakattinti/Git/development/robot-scripts/amazon/Tests/Operating_System.robot" id="s1" name="Operating System">
+<test id="s1-t1" name="Create Some Directories">
+<kw name="Create the Base Directory" library="OS">
+<kw name="Create Directory" library="OperatingSystem">
+<doc>Creates the specified directory.</doc>
 <arguments>
-<arg>about:blank</arg>
-<arg>chrome</arg>
+<arg>${output_directory}</arg>
 </arguments>
-<msg timestamp="20170603 16:26:10.845" level="INFO">Opening browser 'chrome' to base url 'about:blank'</msg>
-<status status="PASS" endtime="20170603 16:26:12.702" starttime="20170603 16:26:10.844"></status>
+<msg timestamp="20170606 23:11:57.158" html="yes" level="INFO">Created directory '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20170606 23:11:57.159" starttime="20170606 23:11:57.157"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:26:12.702" starttime="20170603 16:26:10.844"></status>
-</kw>
-<kw name="Search for Products" library="Amazon">
-<kw name="Load" library="LandingPage">
-<kw name="Go To" library="Selenium2Library">
-<doc>Navigates the active browser instance to the provided URL.</doc>
+<kw name="Should Exist" library="OperatingSystem">
+<doc>Fails unless the given path (file or directory) exists.</doc>
 <arguments>
-<arg>http://www.amazon.com</arg>
+<arg>${output_directory}</arg>
 </arguments>
-<msg timestamp="20170603 16:26:12.704" level="INFO">Opening url 'http://www.amazon.com'</msg>
-<status status="PASS" endtime="20170603 16:26:30.723" starttime="20170603 16:26:12.704"></status>
+<msg timestamp="20170606 23:11:57.159" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs&lt;/a&gt;' exists.</msg>
+<status status="PASS" endtime="20170606 23:11:57.159" starttime="20170606 23:11:57.159"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:26:30.724" starttime="20170603 16:26:12.703"></status>
+<status status="PASS" endtime="20170606 23:11:57.159" starttime="20170606 23:11:57.157"></status>
 </kw>
-<kw name="Verify Page Loaded" library="LandingPage">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
+<kw name="Create Directory 1" library="OS">
+<kw name="Join Path" library="OperatingSystem">
+<doc>Joins the given path part(s) to the given base path.</doc>
 <arguments>
-<arg>Your Amazon.com</arg>
+<arg>${output_directory}</arg>
+<arg>${directory_1}</arg>
 </arguments>
-<status status="PASS" endtime="20170603 16:26:30.782" starttime="20170603 16:26:30.725"></status>
+<assign>
+<var>${directory_path}</var>
+</assign>
+<msg timestamp="20170606 23:11:57.160" level="INFO">${directory_path} = Outputs/first Directory</msg>
+<status status="PASS" endtime="20170606 23:11:57.160" starttime="20170606 23:11:57.160"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:26:30.782" starttime="20170603 16:26:30.724"></status>
-</kw>
-<kw name="Search for Products" library="TopNav">
-<kw name="Enter Search Term" library="TopNav">
-<kw name="Input Text" library="Selenium2Library">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
+<kw name="Create Directory" library="OperatingSystem">
+<doc>Creates the specified directory.</doc>
 <arguments>
-<arg>id=twotabsearchtextbox</arg>
-<arg>Ferrari 458</arg>
+<arg>${directory_path}</arg>
 </arguments>
-<msg timestamp="20170603 16:26:30.783" level="INFO">Typing text 'Ferrari 458' into text field 'id=twotabsearchtextbox'</msg>
-<status status="PASS" endtime="20170603 16:26:33.820" starttime="20170603 16:26:30.783"></status>
+<msg timestamp="20170606 23:11:57.161" html="yes" level="INFO">Created directory '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20170606 23:11:57.161" starttime="20170606 23:11:57.160"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:26:33.820" starttime="20170603 16:26:30.783"></status>
-</kw>
-<kw name="Submit Search" library="TopNav">
-<kw name="Click Button" library="Selenium2Library">
-<doc>Clicks a button identified by `locator`.</doc>
+<kw name="Should Exist" library="OperatingSystem">
+<doc>Fails unless the given path (file or directory) exists.</doc>
 <arguments>
-<arg>xpath=//*[@id="nav-search"]/form/div[2]/div/input</arg>
+<arg>${directory_path}</arg>
 </arguments>
-<msg timestamp="20170603 16:26:33.821" level="INFO">Clicking button 'xpath=//*[@id="nav-search"]/form/div[2]/div/input'.</msg>
-<status status="PASS" endtime="20170603 16:26:41.609" starttime="20170603 16:26:33.821"></status>
+<msg timestamp="20170606 23:11:57.161" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory&lt;/a&gt;' exists.</msg>
+<status status="PASS" endtime="20170606 23:11:57.161" starttime="20170606 23:11:57.161"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:26:41.609" starttime="20170603 16:26:33.820"></status>
+<status status="PASS" endtime="20170606 23:11:57.162" starttime="20170606 23:11:57.160"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:26:41.609" starttime="20170603 16:26:30.782"></status>
-</kw>
-<kw name="Verify Search Completed" library="SearchResults">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
+<kw name="Create Directory 2" library="OS">
+<kw name="Join Path" library="OperatingSystem">
+<doc>Joins the given path part(s) to the given base path.</doc>
 <arguments>
-<arg>"Ferrari 458"</arg>
+<arg>${output_directory}</arg>
+<arg>${directory_2}</arg>
 </arguments>
-<status status="PASS" endtime="20170603 16:26:41.646" starttime="20170603 16:26:41.609"></status>
+<assign>
+<var>${directory_path}</var>
+</assign>
+<msg timestamp="20170606 23:11:57.163" level="INFO">${directory_path} = Outputs/second Directory</msg>
+<status status="PASS" endtime="20170606 23:11:57.163" starttime="20170606 23:11:57.162"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:26:41.646" starttime="20170603 16:26:41.609"></status>
+<kw name="Create Directory" library="OperatingSystem">
+<doc>Creates the specified directory.</doc>
+<arguments>
+<arg>${directory_path}</arg>
+</arguments>
+<msg timestamp="20170606 23:11:57.164" html="yes" level="INFO">Created directory '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20170606 23:11:57.164" starttime="20170606 23:11:57.163"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:26:41.646" starttime="20170603 16:26:12.703"></status>
+<kw name="Should Exist" library="OperatingSystem">
+<doc>Fails unless the given path (file or directory) exists.</doc>
+<arguments>
+<arg>${directory_path}</arg>
+</arguments>
+<msg timestamp="20170606 23:11:57.164" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory&lt;/a&gt;' exists.</msg>
+<status status="PASS" endtime="20170606 23:11:57.164" starttime="20170606 23:11:57.164"></status>
 </kw>
-<kw type="teardown" name="End Web Test" library="Common">
-<kw name="Close Browser" library="Selenium2Library">
-<doc>Closes the current browser.</doc>
-<status status="PASS" endtime="20170603 16:26:41.732" starttime="20170603 16:26:41.647"></status>
+<status status="PASS" endtime="20170606 23:11:57.164" starttime="20170606 23:11:57.162"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:26:41.733" starttime="20170603 16:26:41.646"></status>
+<kw name="Create Directory 3" library="OS">
+<kw name="Join Path" library="OperatingSystem">
+<doc>Joins the given path part(s) to the given base path.</doc>
+<arguments>
+<arg>${output_directory}</arg>
+<arg>${directory_3}</arg>
+</arguments>
+<assign>
+<var>${directory_path}</var>
+</assign>
+<msg timestamp="20170606 23:11:57.165" level="INFO">${directory_path} = Outputs/third Directory</msg>
+<status status="PASS" endtime="20170606 23:11:57.165" starttime="20170606 23:11:57.165"></status>
+</kw>
+<kw name="Create Directory" library="OperatingSystem">
+<doc>Creates the specified directory.</doc>
+<arguments>
+<arg>${directory_path}</arg>
+</arguments>
+<msg timestamp="20170606 23:11:57.166" html="yes" level="INFO">Created directory '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20170606 23:11:57.166" starttime="20170606 23:11:57.165"></status>
+</kw>
+<kw name="Should Exist" library="OperatingSystem">
+<doc>Fails unless the given path (file or directory) exists.</doc>
+<arguments>
+<arg>${directory_path}</arg>
+</arguments>
+<msg timestamp="20170606 23:11:57.166" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory&lt;/a&gt;' exists.</msg>
+<status status="PASS" endtime="20170606 23:11:57.166" starttime="20170606 23:11:57.166"></status>
+</kw>
+<status status="PASS" endtime="20170606 23:11:57.166" starttime="20170606 23:11:57.165"></status>
 </kw>
 <tags>
-<tag>Smoke</tag>
+<tag>OperatingSystem</tag>
 </tags>
-<status status="PASS" endtime="20170603 16:26:41.733" critical="yes" starttime="20170603 16:26:10.843"></status>
+<status status="PASS" endtime="20170606 23:11:57.166" critical="yes" starttime="20170606 23:11:57.157"></status>
 </test>
-<test id="s1-t2" name="Logged out user can view a product">
-<kw type="setup" name="Begin Web Test" library="Common">
-<kw name="Open Browser" library="Selenium2Library">
-<doc>Opens a new browser instance to given URL.</doc>
+<test id="s1-t2" name="Create Some Files">
+<kw name="Create the First File" library="OS">
+<kw name="Join Path" library="OperatingSystem">
+<doc>Joins the given path part(s) to the given base path.</doc>
 <arguments>
-<arg>about:blank</arg>
-<arg>chrome</arg>
+<arg>${output_directory}</arg>
+<arg>${directory_1}</arg>
+<arg>${file_1}</arg>
 </arguments>
-<msg timestamp="20170603 16:26:41.739" level="INFO">Opening browser 'chrome' to base url 'about:blank'</msg>
-<status status="PASS" endtime="20170603 16:26:43.618" starttime="20170603 16:26:41.738"></status>
+<assign>
+<var>${file_path}</var>
+</assign>
+<msg timestamp="20170606 23:11:57.168" level="INFO">${file_path} = Outputs/first Directory/first file.txt</msg>
+<status status="PASS" endtime="20170606 23:11:57.168" starttime="20170606 23:11:57.167"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:26:43.619" starttime="20170603 16:26:41.737"></status>
-</kw>
-<kw name="Search for Products" library="Amazon">
-<kw name="Load" library="LandingPage">
-<kw name="Go To" library="Selenium2Library">
-<doc>Navigates the active browser instance to the provided URL.</doc>
+<kw name="Create File" library="OperatingSystem">
+<doc>Creates a file with the given content and encoding.</doc>
 <arguments>
-<arg>http://www.amazon.com</arg>
+<arg>${file_path}</arg>
+<arg>This is some text in file 1</arg>
 </arguments>
-<msg timestamp="20170603 16:26:43.622" level="INFO">Opening url 'http://www.amazon.com'</msg>
-<status status="PASS" endtime="20170603 16:27:01.941" starttime="20170603 16:26:43.621"></status>
+<msg timestamp="20170606 23:11:57.168" html="yes" level="INFO">Created file '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20170606 23:11:57.169" starttime="20170606 23:11:57.168"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:01.941" starttime="20170603 16:26:43.620"></status>
-</kw>
-<kw name="Verify Page Loaded" library="LandingPage">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
+<kw name="Should Exist" library="OperatingSystem">
+<doc>Fails unless the given path (file or directory) exists.</doc>
 <arguments>
-<arg>Your Amazon.com</arg>
+<arg>${file_path}</arg>
 </arguments>
-<status status="PASS" endtime="20170603 16:27:02.000" starttime="20170603 16:27:01.942"></status>
+<msg timestamp="20170606 23:11:57.169" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt&lt;/a&gt;' exists.</msg>
+<status status="PASS" endtime="20170606 23:11:57.169" starttime="20170606 23:11:57.169"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:02.000" starttime="20170603 16:27:01.941"></status>
+<status status="PASS" endtime="20170606 23:11:57.169" starttime="20170606 23:11:57.167"></status>
 </kw>
-<kw name="Search for Products" library="TopNav">
-<kw name="Enter Search Term" library="TopNav">
-<kw name="Input Text" library="Selenium2Library">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
+<kw name="Create the Second File" library="OS">
+<kw name="Join Path" library="OperatingSystem">
+<doc>Joins the given path part(s) to the given base path.</doc>
 <arguments>
-<arg>id=twotabsearchtextbox</arg>
-<arg>Ferrari 458</arg>
+<arg>${output_directory}</arg>
+<arg>${directory_2}</arg>
+<arg>${file_2}</arg>
 </arguments>
-<msg timestamp="20170603 16:27:02.003" level="INFO">Typing text 'Ferrari 458' into text field 'id=twotabsearchtextbox'</msg>
-<status status="PASS" endtime="20170603 16:27:04.143" starttime="20170603 16:27:02.003"></status>
+<assign>
+<var>${file_path}</var>
+</assign>
+<msg timestamp="20170606 23:11:57.170" level="INFO">${file_path} = Outputs/second Directory/second file.txt</msg>
+<status status="PASS" endtime="20170606 23:11:57.170" starttime="20170606 23:11:57.170"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:04.144" starttime="20170603 16:27:02.002"></status>
-</kw>
-<kw name="Submit Search" library="TopNav">
-<kw name="Click Button" library="Selenium2Library">
-<doc>Clicks a button identified by `locator`.</doc>
+<kw name="Create File" library="OperatingSystem">
+<doc>Creates a file with the given content and encoding.</doc>
 <arguments>
-<arg>xpath=//*[@id="nav-search"]/form/div[2]/div/input</arg>
+<arg>${file_path}</arg>
+<arg>This is some text in file 2</arg>
 </arguments>
-<msg timestamp="20170603 16:27:04.144" level="INFO">Clicking button 'xpath=//*[@id="nav-search"]/form/div[2]/div/input'.</msg>
-<status status="PASS" endtime="20170603 16:27:06.732" starttime="20170603 16:27:04.144"></status>
+<msg timestamp="20170606 23:11:57.171" html="yes" level="INFO">Created file '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/second file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/second file.txt&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20170606 23:11:57.171" starttime="20170606 23:11:57.171"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:06.733" starttime="20170603 16:27:04.144"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:27:06.733" starttime="20170603 16:27:02.001"></status>
-</kw>
-<kw name="Verify Search Completed" library="SearchResults">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
+<kw name="Should Exist" library="OperatingSystem">
+<doc>Fails unless the given path (file or directory) exists.</doc>
 <arguments>
-<arg>"Ferrari 458"</arg>
+<arg>${file_path}</arg>
 </arguments>
-<status status="PASS" endtime="20170603 16:27:08.414" starttime="20170603 16:27:06.733"></status>
+<msg timestamp="20170606 23:11:57.172" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/second file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/second file.txt&lt;/a&gt;' exists.</msg>
+<status status="PASS" endtime="20170606 23:11:57.172" starttime="20170606 23:11:57.172"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:08.414" starttime="20170603 16:27:06.733"></status>
+<status status="PASS" endtime="20170606 23:11:57.172" starttime="20170606 23:11:57.170"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:08.415" starttime="20170603 16:26:43.620"></status>
-</kw>
-<kw name="Select Product from Search Results" library="Amazon">
-<kw name="Click Product Link" library="SearchResults">
-<doc>Clicks on the first product in the search results list</doc>
-<kw name="Click Link" library="Selenium2Library">
-<doc>Clicks a link identified by locator.</doc>
+<kw name="Create the Third File" library="OS">
+<kw name="Join Path" library="OperatingSystem">
+<doc>Joins the given path part(s) to the given base path.</doc>
 <arguments>
-<arg>css=#result_0 a.s-access-detail-page</arg>
+<arg>${output_directory}</arg>
+<arg>${directory_3}</arg>
+<arg>${file_3}</arg>
 </arguments>
-<msg timestamp="20170603 16:27:08.416" level="INFO">Clicking link 'css=#result_0 a.s-access-detail-page'.</msg>
-<status status="PASS" endtime="20170603 16:27:16.151" starttime="20170603 16:27:08.416"></status>
+<assign>
+<var>${file_path}</var>
+</assign>
+<msg timestamp="20170606 23:11:57.174" level="INFO">${file_path} = Outputs/third Directory/third file.txt</msg>
+<status status="PASS" endtime="20170606 23:11:57.174" starttime="20170606 23:11:57.173"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:16.152" starttime="20170603 16:27:08.415"></status>
-</kw>
-<kw name="Verify Page Loaded" library="Product">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
+<kw name="Create File" library="OperatingSystem">
+<doc>Creates a file with the given content and encoding.</doc>
 <arguments>
-<arg>Back to search results</arg>
+<arg>${file_path}</arg>
+<arg>This is some text in file 3</arg>
 </arguments>
-<status status="PASS" endtime="20170603 16:27:16.213" starttime="20170603 16:27:16.153"></status>
+<msg timestamp="20170606 23:11:57.176" html="yes" level="INFO">Created file '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20170606 23:11:57.176" starttime="20170606 23:11:57.174"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:16.213" starttime="20170603 16:27:16.152"></status>
+<kw name="Should Exist" library="OperatingSystem">
+<doc>Fails unless the given path (file or directory) exists.</doc>
+<arguments>
+<arg>${file_path}</arg>
+</arguments>
+<msg timestamp="20170606 23:11:57.177" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt&lt;/a&gt;' exists.</msg>
+<status status="PASS" endtime="20170606 23:11:57.178" starttime="20170606 23:11:57.176"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:16.214" starttime="20170603 16:27:08.415"></status>
-</kw>
-<kw type="teardown" name="End Web Test" library="Common">
-<kw name="Close Browser" library="Selenium2Library">
-<doc>Closes the current browser.</doc>
-<status status="PASS" endtime="20170603 16:27:16.301" starttime="20170603 16:27:16.215"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:27:16.301" starttime="20170603 16:27:16.214"></status>
+<status status="PASS" endtime="20170606 23:11:57.178" starttime="20170606 23:11:57.173"></status>
 </kw>
 <tags>
-<tag>Smoke</tag>
+<tag>OperatingSystem</tag>
 </tags>
-<status status="PASS" endtime="20170603 16:27:16.302" critical="yes" starttime="20170603 16:26:41.736"></status>
+<status status="PASS" endtime="20170606 23:11:57.179" critical="yes" starttime="20170606 23:11:57.167"></status>
 </test>
-<test id="s1-t3" name="Logged out user can add product to cart">
-<kw type="setup" name="Begin Web Test" library="Common">
-<kw name="Open Browser" library="Selenium2Library">
-<doc>Opens a new browser instance to given URL.</doc>
+<test id="s1-t3" name="Move a File">
+<kw name="Move File 3 from Directory 3 to Directory 1" library="OS">
+<kw name="Join Path" library="OperatingSystem">
+<doc>Joins the given path part(s) to the given base path.</doc>
 <arguments>
-<arg>about:blank</arg>
-<arg>chrome</arg>
+<arg>${output_directory}</arg>
+<arg>${directory_3}</arg>
+<arg>${file_3}</arg>
 </arguments>
-<msg timestamp="20170603 16:27:16.305" level="INFO">Opening browser 'chrome' to base url 'about:blank'</msg>
-<status status="PASS" endtime="20170603 16:27:18.095" starttime="20170603 16:27:16.305"></status>
+<assign>
+<var>${source_path}</var>
+</assign>
+<msg timestamp="20170606 23:11:57.183" level="INFO">${source_path} = Outputs/third Directory/third file.txt</msg>
+<status status="PASS" endtime="20170606 23:11:57.183" starttime="20170606 23:11:57.182"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:18.095" starttime="20170603 16:27:16.304"></status>
-</kw>
-<kw name="Search for Products" library="Amazon">
-<kw name="Load" library="LandingPage">
-<kw name="Go To" library="Selenium2Library">
-<doc>Navigates the active browser instance to the provided URL.</doc>
+<kw name="Join Path" library="OperatingSystem">
+<doc>Joins the given path part(s) to the given base path.</doc>
 <arguments>
-<arg>http://www.amazon.com</arg>
+<arg>${output_directory}</arg>
+<arg>${directory_1}</arg>
+<arg>${file_3}</arg>
 </arguments>
-<msg timestamp="20170603 16:27:18.097" level="INFO">Opening url 'http://www.amazon.com'</msg>
-<status status="PASS" endtime="20170603 16:27:38.677" starttime="20170603 16:27:18.097"></status>
+<assign>
+<var>${target_path}</var>
+</assign>
+<msg timestamp="20170606 23:11:57.184" level="INFO">${target_path} = Outputs/first Directory/third file.txt</msg>
+<status status="PASS" endtime="20170606 23:11:57.184" starttime="20170606 23:11:57.184"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:38.677" starttime="20170603 16:27:18.096"></status>
-</kw>
-<kw name="Verify Page Loaded" library="LandingPage">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
+<kw name="Move File" library="OperatingSystem">
+<doc>Moves the source file into the destination.</doc>
 <arguments>
-<arg>Your Amazon.com</arg>
+<arg>${source_path}</arg>
+<arg>${target_path}</arg>
 </arguments>
-<status status="PASS" endtime="20170603 16:27:38.734" starttime="20170603 16:27:38.677"></status>
+<msg timestamp="20170606 23:11:57.186" html="yes" level="INFO">Moved file from '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt&lt;/a&gt;' to '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/third file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/third file.txt&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20170606 23:11:57.187" starttime="20170606 23:11:57.185"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:38.734" starttime="20170603 16:27:38.677"></status>
-</kw>
-<kw name="Search for Products" library="TopNav">
-<kw name="Enter Search Term" library="TopNav">
-<kw name="Input Text" library="Selenium2Library">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
+<kw name="Should Exist" library="OperatingSystem">
+<doc>Fails unless the given path (file or directory) exists.</doc>
 <arguments>
-<arg>id=twotabsearchtextbox</arg>
-<arg>Ferrari 458</arg>
+<arg>${target_path}</arg>
 </arguments>
-<msg timestamp="20170603 16:27:38.735" level="INFO">Typing text 'Ferrari 458' into text field 'id=twotabsearchtextbox'</msg>
-<status status="PASS" endtime="20170603 16:27:41.623" starttime="20170603 16:27:38.735"></status>
+<msg timestamp="20170606 23:11:57.188" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/third file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/third file.txt&lt;/a&gt;' exists.</msg>
+<status status="PASS" endtime="20170606 23:11:57.188" starttime="20170606 23:11:57.187"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:41.623" starttime="20170603 16:27:38.735"></status>
-</kw>
-<kw name="Submit Search" library="TopNav">
-<kw name="Click Button" library="Selenium2Library">
-<doc>Clicks a button identified by `locator`.</doc>
+<kw name="Should Not Exist" library="OperatingSystem">
+<doc>Fails if the given path (file or directory) exists.</doc>
 <arguments>
-<arg>xpath=//*[@id="nav-search"]/form/div[2]/div/input</arg>
+<arg>${source_path}</arg>
 </arguments>
-<msg timestamp="20170603 16:27:41.624" level="INFO">Clicking button 'xpath=//*[@id="nav-search"]/form/div[2]/div/input'.</msg>
-<status status="PASS" endtime="20170603 16:27:49.362" starttime="20170603 16:27:41.624"></status>
+<msg timestamp="20170606 23:11:57.189" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt&lt;/a&gt;' does not exist.</msg>
+<status status="PASS" endtime="20170606 23:11:57.189" starttime="20170606 23:11:57.188"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:27:49.362" starttime="20170603 16:27:41.623"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:27:49.362" starttime="20170603 16:27:38.734"></status>
-</kw>
-<kw name="Verify Search Completed" library="SearchResults">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
-<arguments>
-<arg>"Ferrari 458"</arg>
-</arguments>
-<status status="PASS" endtime="20170603 16:27:49.397" starttime="20170603 16:27:49.363"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:27:49.397" starttime="20170603 16:27:49.363"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:27:49.397" starttime="20170603 16:27:18.096"></status>
-</kw>
-<kw name="Select Product from Search Results" library="Amazon">
-<kw name="Click Product Link" library="SearchResults">
-<doc>Clicks on the first product in the search results list</doc>
-<kw name="Click Link" library="Selenium2Library">
-<doc>Clicks a link identified by locator.</doc>
-<arguments>
-<arg>css=#result_0 a.s-access-detail-page</arg>
-</arguments>
-<msg timestamp="20170603 16:27:49.399" level="INFO">Clicking link 'css=#result_0 a.s-access-detail-page'.</msg>
-<status status="PASS" endtime="20170603 16:27:56.960" starttime="20170603 16:27:49.399"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:27:56.960" starttime="20170603 16:27:49.398"></status>
-</kw>
-<kw name="Verify Page Loaded" library="Product">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
-<arguments>
-<arg>Back to search results</arg>
-</arguments>
-<status status="PASS" endtime="20170603 16:27:57.003" starttime="20170603 16:27:56.961"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:27:57.003" starttime="20170603 16:27:56.960"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:27:57.003" starttime="20170603 16:27:49.398"></status>
-</kw>
-<kw name="Add Product to Cart" library="Amazon">
-<kw name="Add to Cart" library="Product">
-<kw name="Click Button" library="Selenium2Library">
-<doc>Clicks a button identified by `locator`.</doc>
-<arguments>
-<arg>id=add-to-cart-button</arg>
-</arguments>
-<msg timestamp="20170603 16:27:57.005" level="INFO">Clicking button 'id=add-to-cart-button'.</msg>
-<status status="PASS" endtime="20170603 16:27:58.828" starttime="20170603 16:27:57.004"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:27:58.828" starttime="20170603 16:27:57.004"></status>
-</kw>
-<kw name="Verify Product Added" library="Cart">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
-<arguments>
-<arg>Added to Cart</arg>
-</arguments>
-<status status="PASS" endtime="20170603 16:27:58.934" starttime="20170603 16:27:58.829"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:27:58.935" starttime="20170603 16:27:58.829"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:27:58.935" starttime="20170603 16:27:57.004"></status>
-</kw>
-<kw type="teardown" name="End Web Test" library="Common">
-<kw name="Close Browser" library="Selenium2Library">
-<doc>Closes the current browser.</doc>
-<status status="PASS" endtime="20170603 16:27:59.027" starttime="20170603 16:27:58.935"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:27:59.028" starttime="20170603 16:27:58.935"></status>
+<status status="PASS" endtime="20170606 23:11:57.190" starttime="20170606 23:11:57.181"></status>
 </kw>
 <tags>
-<tag>Smoke</tag>
+<tag>OperatingSystem</tag>
 </tags>
-<status status="PASS" endtime="20170603 16:27:59.028" critical="yes" starttime="20170603 16:27:16.302"></status>
+<status status="PASS" endtime="20170606 23:11:57.190" critical="yes" starttime="20170606 23:11:57.179"></status>
 </test>
-<test id="s1-t4" name="Logged out user must sign in to check out">
-<kw type="setup" name="Begin Web Test" library="Common">
-<kw name="Open Browser" library="Selenium2Library">
-<doc>Opens a new browser instance to given URL.</doc>
+<test id="s1-t4" name="Copy a File">
+<kw name="Copy File 1 from Directory 1 to Directory 2" library="OS">
+<kw name="Join Path" library="OperatingSystem">
+<doc>Joins the given path part(s) to the given base path.</doc>
 <arguments>
-<arg>about:blank</arg>
-<arg>chrome</arg>
+<arg>${output_directory}</arg>
+<arg>${directory_1}</arg>
+<arg>${file_1}</arg>
 </arguments>
-<msg timestamp="20170603 16:27:59.031" level="INFO">Opening browser 'chrome' to base url 'about:blank'</msg>
-<status status="PASS" endtime="20170603 16:28:00.896" starttime="20170603 16:27:59.031"></status>
+<assign>
+<var>${source_path}</var>
+</assign>
+<msg timestamp="20170606 23:11:57.193" level="INFO">${source_path} = Outputs/first Directory/first file.txt</msg>
+<status status="PASS" endtime="20170606 23:11:57.193" starttime="20170606 23:11:57.192"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:28:00.896" starttime="20170603 16:27:59.030"></status>
-</kw>
-<kw name="Search for Products" library="Amazon">
-<kw name="Load" library="LandingPage">
-<kw name="Go To" library="Selenium2Library">
-<doc>Navigates the active browser instance to the provided URL.</doc>
+<kw name="Join Path" library="OperatingSystem">
+<doc>Joins the given path part(s) to the given base path.</doc>
 <arguments>
-<arg>http://www.amazon.com</arg>
+<arg>${output_directory}</arg>
+<arg>${directory_2}</arg>
+<arg>${file_1}</arg>
 </arguments>
-<msg timestamp="20170603 16:28:00.899" level="INFO">Opening url 'http://www.amazon.com'</msg>
-<status status="PASS" endtime="20170603 16:28:23.443" starttime="20170603 16:28:00.898"></status>
+<assign>
+<var>${target_path}</var>
+</assign>
+<msg timestamp="20170606 23:11:57.194" level="INFO">${target_path} = Outputs/second Directory/first file.txt</msg>
+<status status="PASS" endtime="20170606 23:11:57.194" starttime="20170606 23:11:57.193"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:28:23.443" starttime="20170603 16:28:00.897"></status>
-</kw>
-<kw name="Verify Page Loaded" library="LandingPage">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
+<kw name="Copy File" library="OperatingSystem">
+<doc>Copies the source file into the destination.</doc>
 <arguments>
-<arg>Your Amazon.com</arg>
+<arg>${source_path}</arg>
+<arg>${target_path}</arg>
 </arguments>
-<status status="PASS" endtime="20170603 16:28:23.496" starttime="20170603 16:28:23.445"></status>
+<msg timestamp="20170606 23:11:57.196" html="yes" level="INFO">Copied file from '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt&lt;/a&gt;' to '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/first file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/first file.txt&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20170606 23:11:57.196" starttime="20170606 23:11:57.194"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:28:23.496" starttime="20170603 16:28:23.444"></status>
-</kw>
-<kw name="Search for Products" library="TopNav">
-<kw name="Enter Search Term" library="TopNav">
-<kw name="Input Text" library="Selenium2Library">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
+<kw name="Should Exist" library="OperatingSystem">
+<doc>Fails unless the given path (file or directory) exists.</doc>
 <arguments>
-<arg>id=twotabsearchtextbox</arg>
-<arg>Ferrari 458</arg>
+<arg>${target_path}</arg>
 </arguments>
-<msg timestamp="20170603 16:28:23.497" level="INFO">Typing text 'Ferrari 458' into text field 'id=twotabsearchtextbox'</msg>
-<status status="PASS" endtime="20170603 16:28:26.497" starttime="20170603 16:28:23.497"></status>
+<msg timestamp="20170606 23:11:57.197" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/first file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/first file.txt&lt;/a&gt;' exists.</msg>
+<status status="PASS" endtime="20170606 23:11:57.197" starttime="20170606 23:11:57.197"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:28:26.497" starttime="20170603 16:28:23.497"></status>
-</kw>
-<kw name="Submit Search" library="TopNav">
-<kw name="Click Button" library="Selenium2Library">
-<doc>Clicks a button identified by `locator`.</doc>
+<kw name="Should Exist" library="OperatingSystem">
+<doc>Fails unless the given path (file or directory) exists.</doc>
 <arguments>
-<arg>xpath=//*[@id="nav-search"]/form/div[2]/div/input</arg>
+<arg>${source_path}</arg>
 </arguments>
-<msg timestamp="20170603 16:28:26.498" level="INFO">Clicking button 'xpath=//*[@id="nav-search"]/form/div[2]/div/input'.</msg>
-<status status="PASS" endtime="20170603 16:28:32.094" starttime="20170603 16:28:26.498"></status>
+<msg timestamp="20170606 23:11:57.198" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt&lt;/a&gt;' exists.</msg>
+<status status="PASS" endtime="20170606 23:11:57.198" starttime="20170606 23:11:57.197"></status>
 </kw>
-<status status="PASS" endtime="20170603 16:28:32.094" starttime="20170603 16:28:26.498"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:32.094" starttime="20170603 16:28:23.496"></status>
-</kw>
-<kw name="Verify Search Completed" library="SearchResults">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
-<arguments>
-<arg>"Ferrari 458"</arg>
-</arguments>
-<status status="PASS" endtime="20170603 16:28:32.148" starttime="20170603 16:28:32.095"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:32.148" starttime="20170603 16:28:32.094"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:32.149" starttime="20170603 16:28:00.897"></status>
-</kw>
-<kw name="Select Product from Search Results" library="Amazon">
-<kw name="Click Product Link" library="SearchResults">
-<doc>Clicks on the first product in the search results list</doc>
-<kw name="Click Link" library="Selenium2Library">
-<doc>Clicks a link identified by locator.</doc>
-<arguments>
-<arg>css=#result_0 a.s-access-detail-page</arg>
-</arguments>
-<msg timestamp="20170603 16:28:32.152" level="INFO">Clicking link 'css=#result_0 a.s-access-detail-page'.</msg>
-<status status="PASS" endtime="20170603 16:28:37.722" starttime="20170603 16:28:32.151"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:37.723" starttime="20170603 16:28:32.150"></status>
-</kw>
-<kw name="Verify Page Loaded" library="Product">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
-<arguments>
-<arg>Back to search results</arg>
-</arguments>
-<status status="PASS" endtime="20170603 16:28:37.796" starttime="20170603 16:28:37.724"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:37.797" starttime="20170603 16:28:37.723"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:37.797" starttime="20170603 16:28:32.149"></status>
-</kw>
-<kw name="Add Product to Cart" library="Amazon">
-<kw name="Add to Cart" library="Product">
-<kw name="Click Button" library="Selenium2Library">
-<doc>Clicks a button identified by `locator`.</doc>
-<arguments>
-<arg>id=add-to-cart-button</arg>
-</arguments>
-<msg timestamp="20170603 16:28:37.798" level="INFO">Clicking button 'id=add-to-cart-button'.</msg>
-<status status="PASS" endtime="20170603 16:28:39.260" starttime="20170603 16:28:37.798"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:39.260" starttime="20170603 16:28:37.797"></status>
-</kw>
-<kw name="Verify Product Added" library="Cart">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
-<arguments>
-<arg>Added to Cart</arg>
-</arguments>
-<status status="PASS" endtime="20170603 16:28:39.295" starttime="20170603 16:28:39.261"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:39.295" starttime="20170603 16:28:39.260"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:39.295" starttime="20170603 16:28:37.797"></status>
-</kw>
-<kw name="Begin Checkout" library="Amazon">
-<kw name="Proceed to Checkout" library="Cart">
-<kw name="Click Link" library="Selenium2Library">
-<doc>Clicks a link identified by locator.</doc>
-<arguments>
-<arg>id=hlb-ptc-btn-native</arg>
-</arguments>
-<msg timestamp="20170603 16:28:39.296" level="INFO">Clicking link 'id=hlb-ptc-btn-native'.</msg>
-<status status="PASS" endtime="20170603 16:28:40.547" starttime="20170603 16:28:39.296"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:40.547" starttime="20170603 16:28:39.295"></status>
-</kw>
-<kw name="Verify Page Loaded" library="SignIn">
-<kw name="Wait Until Page Contains" library="Selenium2Library">
-<doc>Waits until `text` appears on current page.</doc>
-<arguments>
-<arg>Sign In</arg>
-</arguments>
-<status status="PASS" endtime="20170603 16:28:40.747" starttime="20170603 16:28:40.548"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:40.747" starttime="20170603 16:28:40.547"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:40.747" starttime="20170603 16:28:39.295"></status>
-</kw>
-<kw type="teardown" name="End Web Test" library="Common">
-<kw name="Close Browser" library="Selenium2Library">
-<doc>Closes the current browser.</doc>
-<status status="PASS" endtime="20170603 16:28:40.838" starttime="20170603 16:28:40.748"></status>
-</kw>
-<status status="PASS" endtime="20170603 16:28:40.839" starttime="20170603 16:28:40.747"></status>
+<status status="PASS" endtime="20170606 23:11:57.198" starttime="20170606 23:11:57.192"></status>
 </kw>
 <tags>
-<tag>Smoke</tag>
+<tag>OperatingSystem</tag>
 </tags>
-<status status="PASS" endtime="20170603 16:28:40.839" critical="yes" starttime="20170603 16:27:59.029"></status>
+<status status="PASS" endtime="20170606 23:11:57.198" critical="yes" starttime="20170606 23:11:57.191"></status>
 </test>
-<doc>This is some basic info about the whole suite</doc>
-<status status="PASS" endtime="20170603 16:28:40.841" starttime="20170603 16:26:10.643"></status>
+<doc>These are creating directories and files tests</doc>
+<status status="PASS" endtime="20170606 23:11:57.199" starttime="20170606 23:11:57.113"></status>
 </suite>
 <statistics>
 <total>
@@ -497,10 +353,10 @@
 <stat fail="0" pass="4">All Tests</stat>
 </total>
 <tag>
-<stat fail="0" pass="4">Smoke</stat>
+<stat fail="0" pass="4">OperatingSystem</stat>
 </tag>
 <suite>
-<stat fail="0" id="s1" name="Amazon" pass="4">Amazon</stat>
+<stat fail="0" id="s1" name="Operating System" pass="4">Operating System</stat>
 </suite>
 </statistics>
 <errors>

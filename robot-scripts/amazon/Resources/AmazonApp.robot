@@ -7,6 +7,11 @@ Resource  ../Resources/PO/Cart.robot
 Resource  ../Resources/PO/SignIn.robot
 
 *** Keywords ***
+
+Login
+    [Arguments]  ${Username}  ${Password}
+    SignIn.Login With Valid Credentials   ${Username}  ${Password}
+
 Search for Products
     LandingPage.Load
     LandingPage.Verify Page Loaded
@@ -19,10 +24,12 @@ Select Product from Search Results
 
 Add Product to Cart
     Product.Add to Cart
-    #Product.Wait for Modal
-    #Product.Click No
     Cart.Verify Product Added
 
 Begin Checkout
     Cart.Proceed to Checkout
     SignIn.Verify Page Loaded
+
+
+
+
