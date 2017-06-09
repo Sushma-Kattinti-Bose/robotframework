@@ -1,362 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20170606 23:11:57.111" generator="Robot 3.0.2 (Python 2.7.13 on darwin)">
-<suite source="/Users/sushmakattinti/Git/development/robot-scripts/amazon/Tests/Operating_System.robot" id="s1" name="Operating System">
-<test id="s1-t1" name="Create Some Directories">
-<kw name="Create the Base Directory" library="OS">
-<kw name="Create Directory" library="OperatingSystem">
-<doc>Creates the specified directory.</doc>
+<robot generated="20170608 19:26:48.327" generator="Robot 3.0.2 (Python 2.7.13 on darwin)">
+<suite source="/Users/sushmakattinti/Git/development/robot-scripts/amazon/Tests/API_Tests.robot" id="s1" name="API Tests">
+<test id="s1-t1" name="Make a simple REST API call">
+<kw name="Check Github Username" library="Github">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
 <arguments>
-<arg>${output_directory}</arg>
+<arg>my_github_session</arg>
+<arg>https://api.github.com</arg>
+<arg>verify=True</arg>
 </arguments>
-<msg timestamp="20170606 23:11:57.158" html="yes" level="INFO">Created directory '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs&lt;/a&gt;'.</msg>
-<status status="PASS" endtime="20170606 23:11:57.159" starttime="20170606 23:11:57.157"></status>
+<msg timestamp="20170608 19:26:48.608" level="INFO">Creating Session using : alias=my_github_session, url=https://api.github.com, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" endtime="20170608 19:26:48.608" starttime="20170608 19:26:48.608"></status>
 </kw>
-<kw name="Should Exist" library="OperatingSystem">
-<doc>Fails unless the given path (file or directory) exists.</doc>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
 <arguments>
-<arg>${output_directory}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.159" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs&lt;/a&gt;' exists.</msg>
-<status status="PASS" endtime="20170606 23:11:57.159" starttime="20170606 23:11:57.159"></status>
-</kw>
-<status status="PASS" endtime="20170606 23:11:57.159" starttime="20170606 23:11:57.157"></status>
-</kw>
-<kw name="Create Directory 1" library="OS">
-<kw name="Join Path" library="OperatingSystem">
-<doc>Joins the given path part(s) to the given base path.</doc>
-<arguments>
-<arg>${output_directory}</arg>
-<arg>${directory_1}</arg>
+<arg>my_github_session</arg>
+<arg>users/robotframeworktutorial</arg>
 </arguments>
 <assign>
-<var>${directory_path}</var>
+<var>${response}</var>
 </assign>
-<msg timestamp="20170606 23:11:57.160" level="INFO">${directory_path} = Outputs/first Directory</msg>
-<status status="PASS" endtime="20170606 23:11:57.160" starttime="20170606 23:11:57.160"></status>
+<msg timestamp="20170608 19:26:48.801" level="INFO">Get Request using : alias=my_github_session, uri=users/robotframeworktutorial, headers=None json=None</msg>
+<msg timestamp="20170608 19:26:48.801" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20170608 19:26:48.801" starttime="20170608 19:26:48.609"></status>
 </kw>
-<kw name="Create Directory" library="OperatingSystem">
-<doc>Creates the specified directory.</doc>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
 <arguments>
-<arg>${directory_path}</arg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
 </arguments>
-<msg timestamp="20170606 23:11:57.161" html="yes" level="INFO">Created directory '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory&lt;/a&gt;'.</msg>
-<status status="PASS" endtime="20170606 23:11:57.161" starttime="20170606 23:11:57.160"></status>
+<msg timestamp="20170608 19:26:48.802" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20170608 19:26:48.802" starttime="20170608 19:26:48.801"></status>
 </kw>
-<kw name="Should Exist" library="OperatingSystem">
-<doc>Fails unless the given path (file or directory) exists.</doc>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
-<arg>${directory_path}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.161" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory&lt;/a&gt;' exists.</msg>
-<status status="PASS" endtime="20170606 23:11:57.161" starttime="20170606 23:11:57.161"></status>
-</kw>
-<status status="PASS" endtime="20170606 23:11:57.162" starttime="20170606 23:11:57.160"></status>
-</kw>
-<kw name="Create Directory 2" library="OS">
-<kw name="Join Path" library="OperatingSystem">
-<doc>Joins the given path part(s) to the given base path.</doc>
-<arguments>
-<arg>${output_directory}</arg>
-<arg>${directory_2}</arg>
+<arg>${response.json()}</arg>
 </arguments>
 <assign>
-<var>${directory_path}</var>
+<var>${json}</var>
 </assign>
-<msg timestamp="20170606 23:11:57.163" level="INFO">${directory_path} = Outputs/second Directory</msg>
-<status status="PASS" endtime="20170606 23:11:57.163" starttime="20170606 23:11:57.162"></status>
+<msg timestamp="20170608 19:26:48.803" level="INFO">${json} = {u'public_repos': 0, u'site_admin': False, u'subscriptions_url': u'https://api.github.com/users/robotframeworktutorial/subscriptions', u'gravatar_id': u'', u'hireable': None, u'id': 12807727, u'follow...</msg>
+<status status="PASS" endtime="20170608 19:26:48.803" starttime="20170608 19:26:48.802"></status>
 </kw>
-<kw name="Create Directory" library="OperatingSystem">
-<doc>Creates the specified directory.</doc>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
 <arguments>
-<arg>${directory_path}</arg>
+<arg>${json['login']}</arg>
+<arg>robotframeworktutorial</arg>
 </arguments>
-<msg timestamp="20170606 23:11:57.164" html="yes" level="INFO">Created directory '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory&lt;/a&gt;'.</msg>
-<status status="PASS" endtime="20170606 23:11:57.164" starttime="20170606 23:11:57.163"></status>
+<status status="PASS" endtime="20170608 19:26:48.803" starttime="20170608 19:26:48.803"></status>
 </kw>
-<kw name="Should Exist" library="OperatingSystem">
-<doc>Fails unless the given path (file or directory) exists.</doc>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
 <arguments>
-<arg>${directory_path}</arg>
+<arg>${json}</arg>
 </arguments>
-<msg timestamp="20170606 23:11:57.164" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory&lt;/a&gt;' exists.</msg>
-<status status="PASS" endtime="20170606 23:11:57.164" starttime="20170606 23:11:57.164"></status>
+<msg timestamp="20170608 19:26:48.804" level="INFO">{u'public_repos': 0, u'site_admin': False, u'subscriptions_url': u'https://api.github.com/users/robotframeworktutorial/subscriptions', u'gravatar_id': u'', u'hireable': None, u'id': 12807727, u'followers_url': u'https://api.github.com/users/robotframeworktutorial/followers', u'following_url': u'https://api.github.com/users/robotframeworktutorial/following{/other_user}', u'blog': u'', u'followers': 0, u'location': None, u'type': u'User', u'email': None, u'bio': None, u'gists_url': u'https://api.github.com/users/robotframeworktutorial/gists{/gist_id}', u'company': None, u'events_url': u'https://api.github.com/users/robotframeworktutorial/events{/privacy}', u'html_url': u'https://github.com/robotframeworktutorial', u'updated_at': u'2016-09-19T04:37:21Z', u'received_events_url': u'https://api.github.com/users/robotframeworktutorial/received_events', u'starred_url': u'https://api.github.com/users/robotframeworktutorial/starred{/owner}{/repo}', u'public_gists': 0, u'name': None, u'organizations_url': u'https://api.github.com/users/robotframeworktutorial/orgs', u'url': u'https://api.github.com/users/robotframeworktutorial', u'created_at': u'2015-06-09T04:10:30Z', u'avatar_url': u'https://avatars1.githubusercontent.com/u/12807727?v=3', u'repos_url': u'https://api.github.com/users/robotframeworktutorial/repos', u'following': 0, u'login': u'robotframeworktutorial'}</msg>
+<status status="PASS" endtime="20170608 19:26:48.804" starttime="20170608 19:26:48.803"></status>
 </kw>
-<status status="PASS" endtime="20170606 23:11:57.164" starttime="20170606 23:11:57.162"></status>
-</kw>
-<kw name="Create Directory 3" library="OS">
-<kw name="Join Path" library="OperatingSystem">
-<doc>Joins the given path part(s) to the given base path.</doc>
-<arguments>
-<arg>${output_directory}</arg>
-<arg>${directory_3}</arg>
-</arguments>
-<assign>
-<var>${directory_path}</var>
-</assign>
-<msg timestamp="20170606 23:11:57.165" level="INFO">${directory_path} = Outputs/third Directory</msg>
-<status status="PASS" endtime="20170606 23:11:57.165" starttime="20170606 23:11:57.165"></status>
-</kw>
-<kw name="Create Directory" library="OperatingSystem">
-<doc>Creates the specified directory.</doc>
-<arguments>
-<arg>${directory_path}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.166" html="yes" level="INFO">Created directory '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory&lt;/a&gt;'.</msg>
-<status status="PASS" endtime="20170606 23:11:57.166" starttime="20170606 23:11:57.165"></status>
-</kw>
-<kw name="Should Exist" library="OperatingSystem">
-<doc>Fails unless the given path (file or directory) exists.</doc>
-<arguments>
-<arg>${directory_path}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.166" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory&lt;/a&gt;' exists.</msg>
-<status status="PASS" endtime="20170606 23:11:57.166" starttime="20170606 23:11:57.166"></status>
-</kw>
-<status status="PASS" endtime="20170606 23:11:57.166" starttime="20170606 23:11:57.165"></status>
+<status status="PASS" endtime="20170608 19:26:48.804" starttime="20170608 19:26:48.607"></status>
 </kw>
 <tags>
-<tag>OperatingSystem</tag>
+<tag>API</tag>
 </tags>
-<status status="PASS" endtime="20170606 23:11:57.166" critical="yes" starttime="20170606 23:11:57.157"></status>
+<status status="PASS" endtime="20170608 19:26:48.804" critical="yes" starttime="20170608 19:26:48.606"></status>
 </test>
-<test id="s1-t2" name="Create Some Files">
-<kw name="Create the First File" library="OS">
-<kw name="Join Path" library="OperatingSystem">
-<doc>Joins the given path part(s) to the given base path.</doc>
+<test id="s1-t2" name="Display emoji from Github">
+<kw name="Display Emoji" library="Github">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
 <arguments>
-<arg>${output_directory}</arg>
-<arg>${directory_1}</arg>
-<arg>${file_1}</arg>
+<arg>my_github_session</arg>
+<arg>https://api.github.com</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20170608 19:26:48.806" level="INFO">Creating Session using : alias=my_github_session, url=https://api.github.com, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" endtime="20170608 19:26:48.806" starttime="20170608 19:26:48.805"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>my_github_session</arg>
+<arg>emojis</arg>
 </arguments>
 <assign>
-<var>${file_path}</var>
+<var>${response}</var>
 </assign>
-<msg timestamp="20170606 23:11:57.168" level="INFO">${file_path} = Outputs/first Directory/first file.txt</msg>
-<status status="PASS" endtime="20170606 23:11:57.168" starttime="20170606 23:11:57.167"></status>
+<msg timestamp="20170608 19:26:49.007" level="INFO">Get Request using : alias=my_github_session, uri=emojis, headers=None json=None</msg>
+<msg timestamp="20170608 19:26:49.008" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20170608 19:26:49.008" starttime="20170608 19:26:48.806"></status>
 </kw>
-<kw name="Create File" library="OperatingSystem">
-<doc>Creates a file with the given content and encoding.</doc>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
 <arguments>
-<arg>${file_path}</arg>
-<arg>This is some text in file 1</arg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
 </arguments>
-<msg timestamp="20170606 23:11:57.168" html="yes" level="INFO">Created file '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt&lt;/a&gt;'.</msg>
-<status status="PASS" endtime="20170606 23:11:57.169" starttime="20170606 23:11:57.168"></status>
+<msg timestamp="20170608 19:26:49.009" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20170608 19:26:49.009" starttime="20170608 19:26:49.008"></status>
 </kw>
-<kw name="Should Exist" library="OperatingSystem">
-<doc>Fails unless the given path (file or directory) exists.</doc>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
-<arg>${file_path}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.169" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt&lt;/a&gt;' exists.</msg>
-<status status="PASS" endtime="20170606 23:11:57.169" starttime="20170606 23:11:57.169"></status>
-</kw>
-<status status="PASS" endtime="20170606 23:11:57.169" starttime="20170606 23:11:57.167"></status>
-</kw>
-<kw name="Create the Second File" library="OS">
-<kw name="Join Path" library="OperatingSystem">
-<doc>Joins the given path part(s) to the given base path.</doc>
-<arguments>
-<arg>${output_directory}</arg>
-<arg>${directory_2}</arg>
-<arg>${file_2}</arg>
+<arg>${response.json()}</arg>
 </arguments>
 <assign>
-<var>${file_path}</var>
+<var>${json}</var>
 </assign>
-<msg timestamp="20170606 23:11:57.170" level="INFO">${file_path} = Outputs/second Directory/second file.txt</msg>
-<status status="PASS" endtime="20170606 23:11:57.170" starttime="20170606 23:11:57.170"></status>
+<msg timestamp="20170608 19:26:49.013" level="INFO">${json} = {u'factory': u'https://assets-cdn.github.com/images/icons/emoji/unicode/1f3ed.png?v7', u'four': u'https://assets-cdn.github.com/images/icons/emoji/unicode/0034-20e3.png?v7', u'cyprus': u'https://asset...</msg>
+<status status="PASS" endtime="20170608 19:26:49.013" starttime="20170608 19:26:49.009"></status>
 </kw>
-<kw name="Create File" library="OperatingSystem">
-<doc>Creates a file with the given content and encoding.</doc>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
-<arg>${file_path}</arg>
-<arg>This is some text in file 2</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.171" html="yes" level="INFO">Created file '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/second file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/second file.txt&lt;/a&gt;'.</msg>
-<status status="PASS" endtime="20170606 23:11:57.171" starttime="20170606 23:11:57.171"></status>
-</kw>
-<kw name="Should Exist" library="OperatingSystem">
-<doc>Fails unless the given path (file or directory) exists.</doc>
-<arguments>
-<arg>${file_path}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.172" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/second file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/second file.txt&lt;/a&gt;' exists.</msg>
-<status status="PASS" endtime="20170606 23:11:57.172" starttime="20170606 23:11:57.172"></status>
-</kw>
-<status status="PASS" endtime="20170606 23:11:57.172" starttime="20170606 23:11:57.170"></status>
-</kw>
-<kw name="Create the Third File" library="OS">
-<kw name="Join Path" library="OperatingSystem">
-<doc>Joins the given path part(s) to the given base path.</doc>
-<arguments>
-<arg>${output_directory}</arg>
-<arg>${directory_3}</arg>
-<arg>${file_3}</arg>
+<arg>${json['aerial_tramway']}</arg>
 </arguments>
 <assign>
-<var>${file_path}</var>
+<var>${emoji_url}</var>
 </assign>
-<msg timestamp="20170606 23:11:57.174" level="INFO">${file_path} = Outputs/third Directory/third file.txt</msg>
-<status status="PASS" endtime="20170606 23:11:57.174" starttime="20170606 23:11:57.173"></status>
+<msg timestamp="20170608 19:26:49.014" level="INFO">${emoji_url} = https://assets-cdn.github.com/images/icons/emoji/unicode/1f6a1.png?v7</msg>
+<status status="PASS" endtime="20170608 19:26:49.014" starttime="20170608 19:26:49.013"></status>
 </kw>
-<kw name="Create File" library="OperatingSystem">
-<doc>Creates a file with the given content and encoding.</doc>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
 <arguments>
-<arg>${file_path}</arg>
-<arg>This is some text in file 3</arg>
+<arg>${emoji_url}</arg>
+<arg>chrome</arg>
 </arguments>
-<msg timestamp="20170606 23:11:57.176" html="yes" level="INFO">Created file '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt&lt;/a&gt;'.</msg>
-<status status="PASS" endtime="20170606 23:11:57.176" starttime="20170606 23:11:57.174"></status>
+<msg timestamp="20170608 19:26:49.015" level="INFO">Opening browser 'chrome' to base url 'https://assets-cdn.github.com/images/icons/emoji/unicode/1f6a1.png?v7'</msg>
+<status status="PASS" endtime="20170608 19:26:51.432" starttime="20170608 19:26:49.014"></status>
 </kw>
-<kw name="Should Exist" library="OperatingSystem">
-<doc>Fails unless the given path (file or directory) exists.</doc>
-<arguments>
-<arg>${file_path}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.177" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt&lt;/a&gt;' exists.</msg>
-<status status="PASS" endtime="20170606 23:11:57.178" starttime="20170606 23:11:57.176"></status>
-</kw>
-<status status="PASS" endtime="20170606 23:11:57.178" starttime="20170606 23:11:57.173"></status>
+<status status="PASS" endtime="20170608 19:26:51.433" starttime="20170608 19:26:48.805"></status>
 </kw>
 <tags>
-<tag>OperatingSystem</tag>
+<tag>API</tag>
 </tags>
-<status status="PASS" endtime="20170606 23:11:57.179" critical="yes" starttime="20170606 23:11:57.167"></status>
+<status status="PASS" endtime="20170608 19:26:51.433" critical="yes" starttime="20170608 19:26:48.805"></status>
 </test>
-<test id="s1-t3" name="Move a File">
-<kw name="Move File 3 from Directory 3 to Directory 1" library="OS">
-<kw name="Join Path" library="OperatingSystem">
-<doc>Joins the given path part(s) to the given base path.</doc>
-<arguments>
-<arg>${output_directory}</arg>
-<arg>${directory_3}</arg>
-<arg>${file_3}</arg>
-</arguments>
-<assign>
-<var>${source_path}</var>
-</assign>
-<msg timestamp="20170606 23:11:57.183" level="INFO">${source_path} = Outputs/third Directory/third file.txt</msg>
-<status status="PASS" endtime="20170606 23:11:57.183" starttime="20170606 23:11:57.182"></status>
-</kw>
-<kw name="Join Path" library="OperatingSystem">
-<doc>Joins the given path part(s) to the given base path.</doc>
-<arguments>
-<arg>${output_directory}</arg>
-<arg>${directory_1}</arg>
-<arg>${file_3}</arg>
-</arguments>
-<assign>
-<var>${target_path}</var>
-</assign>
-<msg timestamp="20170606 23:11:57.184" level="INFO">${target_path} = Outputs/first Directory/third file.txt</msg>
-<status status="PASS" endtime="20170606 23:11:57.184" starttime="20170606 23:11:57.184"></status>
-</kw>
-<kw name="Move File" library="OperatingSystem">
-<doc>Moves the source file into the destination.</doc>
-<arguments>
-<arg>${source_path}</arg>
-<arg>${target_path}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.186" html="yes" level="INFO">Moved file from '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt&lt;/a&gt;' to '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/third file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/third file.txt&lt;/a&gt;'.</msg>
-<status status="PASS" endtime="20170606 23:11:57.187" starttime="20170606 23:11:57.185"></status>
-</kw>
-<kw name="Should Exist" library="OperatingSystem">
-<doc>Fails unless the given path (file or directory) exists.</doc>
-<arguments>
-<arg>${target_path}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.188" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/third file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/third file.txt&lt;/a&gt;' exists.</msg>
-<status status="PASS" endtime="20170606 23:11:57.188" starttime="20170606 23:11:57.187"></status>
-</kw>
-<kw name="Should Not Exist" library="OperatingSystem">
-<doc>Fails if the given path (file or directory) exists.</doc>
-<arguments>
-<arg>${source_path}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.189" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/third Directory/third file.txt&lt;/a&gt;' does not exist.</msg>
-<status status="PASS" endtime="20170606 23:11:57.189" starttime="20170606 23:11:57.188"></status>
-</kw>
-<status status="PASS" endtime="20170606 23:11:57.190" starttime="20170606 23:11:57.181"></status>
-</kw>
-<tags>
-<tag>OperatingSystem</tag>
-</tags>
-<status status="PASS" endtime="20170606 23:11:57.190" critical="yes" starttime="20170606 23:11:57.179"></status>
-</test>
-<test id="s1-t4" name="Copy a File">
-<kw name="Copy File 1 from Directory 1 to Directory 2" library="OS">
-<kw name="Join Path" library="OperatingSystem">
-<doc>Joins the given path part(s) to the given base path.</doc>
-<arguments>
-<arg>${output_directory}</arg>
-<arg>${directory_1}</arg>
-<arg>${file_1}</arg>
-</arguments>
-<assign>
-<var>${source_path}</var>
-</assign>
-<msg timestamp="20170606 23:11:57.193" level="INFO">${source_path} = Outputs/first Directory/first file.txt</msg>
-<status status="PASS" endtime="20170606 23:11:57.193" starttime="20170606 23:11:57.192"></status>
-</kw>
-<kw name="Join Path" library="OperatingSystem">
-<doc>Joins the given path part(s) to the given base path.</doc>
-<arguments>
-<arg>${output_directory}</arg>
-<arg>${directory_2}</arg>
-<arg>${file_1}</arg>
-</arguments>
-<assign>
-<var>${target_path}</var>
-</assign>
-<msg timestamp="20170606 23:11:57.194" level="INFO">${target_path} = Outputs/second Directory/first file.txt</msg>
-<status status="PASS" endtime="20170606 23:11:57.194" starttime="20170606 23:11:57.193"></status>
-</kw>
-<kw name="Copy File" library="OperatingSystem">
-<doc>Copies the source file into the destination.</doc>
-<arguments>
-<arg>${source_path}</arg>
-<arg>${target_path}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.196" html="yes" level="INFO">Copied file from '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt&lt;/a&gt;' to '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/first file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/first file.txt&lt;/a&gt;'.</msg>
-<status status="PASS" endtime="20170606 23:11:57.196" starttime="20170606 23:11:57.194"></status>
-</kw>
-<kw name="Should Exist" library="OperatingSystem">
-<doc>Fails unless the given path (file or directory) exists.</doc>
-<arguments>
-<arg>${target_path}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.197" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/first file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/second Directory/first file.txt&lt;/a&gt;' exists.</msg>
-<status status="PASS" endtime="20170606 23:11:57.197" starttime="20170606 23:11:57.197"></status>
-</kw>
-<kw name="Should Exist" library="OperatingSystem">
-<doc>Fails unless the given path (file or directory) exists.</doc>
-<arguments>
-<arg>${source_path}</arg>
-</arguments>
-<msg timestamp="20170606 23:11:57.198" html="yes" level="INFO">Path '&lt;a href="file:///Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt"&gt;/Users/sushmakattinti/Git/development/robot-scripts/amazon/Outputs/first Directory/first file.txt&lt;/a&gt;' exists.</msg>
-<status status="PASS" endtime="20170606 23:11:57.198" starttime="20170606 23:11:57.197"></status>
-</kw>
-<status status="PASS" endtime="20170606 23:11:57.198" starttime="20170606 23:11:57.192"></status>
-</kw>
-<tags>
-<tag>OperatingSystem</tag>
-</tags>
-<status status="PASS" endtime="20170606 23:11:57.198" critical="yes" starttime="20170606 23:11:57.191"></status>
-</test>
-<doc>These are creating directories and files tests</doc>
-<status status="PASS" endtime="20170606 23:11:57.199" starttime="20170606 23:11:57.113"></status>
+<doc>These are the API tests</doc>
+<status status="PASS" endtime="20170608 19:26:51.435" starttime="20170608 19:26:48.330"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="0" pass="4">Critical Tests</stat>
-<stat fail="0" pass="4">All Tests</stat>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
 </total>
 <tag>
-<stat fail="0" pass="4">OperatingSystem</stat>
+<stat fail="0" pass="2">API</stat>
 </tag>
 <suite>
-<stat fail="0" id="s1" name="Operating System" pass="4">Operating System</stat>
+<stat fail="0" id="s1" name="API Tests" pass="2">API Tests</stat>
 </suite>
 </statistics>
 <errors>
