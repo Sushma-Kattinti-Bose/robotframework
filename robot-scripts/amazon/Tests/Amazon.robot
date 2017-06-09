@@ -13,8 +13,8 @@ Test Teardown  End Web Test
 ${BROWSER} =  chrome
 ${START_URL} =  https://www.amazon.com
 ${SEARCH_TERM} =  Lamborghini Gallardo
-${LOGIN_EMAIL} =  sushma.kattinti@yahoo.com
-${LOGIN_PASSWORD} =  Starbucks0409!
+${LOGIN_EMAIL} =  *******@example.com
+${LOGIN_PASSWORD} =  ********
 
 *** Test Cases ***
 
